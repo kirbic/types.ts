@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm ci
+      - run: npm run update-endpoints
       - run: npm run build
       - run: npx semantic-release
         env:
