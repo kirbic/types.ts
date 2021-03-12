@@ -34,16 +34,21 @@ async function main() {
   //   ignoreChangesBefore: "2020-06-10",
   // });
 
+  const res = await graphqlGot(
+    "https://kirbic-openapo-graphql.app.faable.com/api/graphql",
+    {
+      query: QUERY,
+      variables: {
+        //url: "http://localhost:3000/api/graphql",
+        // version,
+        // ignoreChangesBefore: "2020-06-10",
+      },
+    }
+  );
+  console.log(res.body);
   const {
     body: { endpoints },
-  } = await graphqlGot("http://localhost:3000/api/graphql", {
-    query: QUERY,
-    variables: {
-      //url: "http://localhost:3000/api/graphql",
-      version,
-      ignoreChangesBefore: "2020-06-10",
-    },
-  });
+  } = res;
   console.log(endpoints);
   console.log("THE ENDPOINTS");
   writeFileSync(
