@@ -7,6 +7,7 @@ if (!process.env.VERSION) {
   throw new Error(`VERSION environment variable must be set`);
 }
 
+
 const version = process.env.VERSION.replace(/^v/, "");
 
 const QUERY = `

@@ -14,6 +14,13 @@ jobs:
         with:
           node-version: "12.x"
       - run: npm ci
+      - run: npm install @kirbic/openapi-types@latest
+        if: github.event_name == 'repository_dispatch'
+      - run: node -e "console.log('::set-output name=version::' + require('@kirbic/openapi-types/package').version)"
+        id: openapi_types
+      - run: npm run update-endpoints
+        env:
+          VERSION: ${{ steps.openapi_types.outputs.version }}
       - run: npm run update-endpoints
       - run: npm run build
       - run: npx semantic-release

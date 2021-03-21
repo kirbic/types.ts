@@ -151,13 +151,6 @@ export interface Endpoints {
   /**
    * @see
    */
-  "DELETE /order/delete_all_orders": Operation<
-    "/order/delete_all_orders",
-    "delete"
-  >;
-  /**
-   * @see
-   */
   "GET /address/": Operation<"/address/", "get">;
   /**
    * @see
@@ -170,7 +163,10 @@ export interface Endpoints {
   /**
    * @see
    */
-  "GET /catalog/collection/tags": Operation<"/catalog/collection/tags", "get">;
+  "GET /catalog/collection/search": Operation<
+    "/catalog/collection/search",
+    "get"
+  >;
   /**
    * @see
    */
@@ -190,34 +186,6 @@ export interface Endpoints {
    * @see
    */
   "GET /order/": Operation<"/order/", "get">;
-  /**
-   * @see
-   */
-  "GET /payment/paypal/complete/{session_id}": Operation<
-    "/payment/paypal/complete/{session_id}",
-    "get"
-  >;
-  /**
-   * @see
-   */
-  "GET /payment/stripe/complete/{shop_id}/{session_id}": Operation<
-    "/payment/stripe/complete/{shop_id}/{session_id}",
-    "get"
-  >;
-  /**
-   * @see
-   */
-  "GET /payment/stripe/get-public-key": Operation<
-    "/payment/stripe/get-public-key",
-    "get"
-  >;
-  /**
-   * @see
-   */
-  "GET /payment/stripe/unregister": Operation<
-    "/payment/stripe/unregister",
-    "get"
-  >;
   /**
    * @see
    */
@@ -274,30 +242,22 @@ export interface Endpoints {
   /**
    * @see
    */
-  "POST /payment/add-payment": Operation<"/payment/add-payment", "post">;
-  /**
-   * @see
-   */
-  "POST /payment/paypal/capture": Operation<"/payment/paypal/capture", "post">;
-  /**
-   * @see
-   */
-  "POST /payment/paypal/session": Operation<"/payment/paypal/session", "post">;
-  /**
-   * @see
-   */
-  "POST /payment/stripe/register": Operation<
-    "/payment/stripe/register",
+  "POST /order/cancel/{order_id}": Operation<
+    "/order/cancel/{order_id}",
     "post"
   >;
   /**
    * @see
    */
-  "POST /payment/stripe/session": Operation<"/payment/stripe/session", "post">;
+  "POST /order/clone/{order_id}": Operation<"/order/clone/{order_id}", "post">;
   /**
    * @see
    */
-  "POST /payment/stripe/webhook": Operation<"/payment/stripe/webhook", "post">;
+  "POST /order/paywall": Operation<"/order/paywall", "post">;
+  /**
+   * @see
+   */
+  "POST /payment/add-payment": Operation<"/payment/add-payment", "post">;
   /**
    * @see
    */
