@@ -1,19 +1,86 @@
 [
   {
+    "method": "POST",
+    "url": "/address/",
+    "documentationUrl": "",
+    "parameters": [
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "BODY",
+        "name": "default_billing"
+      },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "BODY",
+        "name": "default_delivery"
+      },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "name" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "line_1" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "line_2" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "city" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "state" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "zip_code" },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "BODY",
+        "name": "phone_number"
+      },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "BODY",
+        "name": "delivery_instructions"
+      }
+    ]
+  },
+  {
+    "method": "DELETE",
+    "url": "/address/{address_id}",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "PATH", "name": "address_id" }
+    ]
+  },
+  {
     "method": "GET",
-    "url": "/shop/",
+    "url": "/address/",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "DELETE",
+    "url": "/cart/",
     "documentationUrl": "",
     "parameters": []
   },
   {
     "method": "GET",
-    "url": "/shop/all",
+    "url": "/cart/",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "PATCH",
+    "url": "/cart/{mode}/{price_id}",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "PATH", "name": "price_id" },
+      { "alias": null, "deprecated": null, "in": "PATH", "name": "mode" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "quantity" }
+    ]
+  },
+  {
+    "method": "POST",
+    "url": "/cart/metadata",
     "documentationUrl": "",
     "parameters": []
   },
   {
     "method": "POST",
-    "url": "/shop/create",
+    "url": "/catalog/collection/",
     "documentationUrl": "",
     "parameters": [
       { "alias": null, "deprecated": null, "in": "BODY", "name": "name" },
@@ -23,29 +90,98 @@
         "in": "BODY",
         "name": "description"
       },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "site_url" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "brandy_id" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "admin_email" }
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "tags" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "slug" }
     ]
   },
   {
+    "method": "DELETE",
+    "url": "/catalog/collection/{collection_id}",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
     "method": "GET",
-    "url": "/catalog/product/",
+    "url": "/catalog/collection/",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "url": "/catalog/collection/search",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/media/{product_id}",
     "documentationUrl": "",
     "parameters": [
+      { "alias": null, "deprecated": null, "in": "PATH", "name": "product_id" }
+    ]
+  },
+  {
+    "method": "POST",
+    "url": "/order/cancel/{order_id}",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/order/clone/{order_id}",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/order/",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "billable" },
       {
         "alias": null,
         "deprecated": null,
-        "in": "QUERY",
-        "name": "collection_slug"
+        "in": "BODY",
+        "name": "delivery_address"
       },
       {
         "alias": null,
         "deprecated": null,
-        "in": "QUERY",
-        "name": "collection_id"
-      }
+        "in": "BODY",
+        "name": "intent_payment_method"
+      },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "BODY",
+        "name": "intent_delivery_method"
+      },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "metadata" }
     ]
+  },
+  {
+    "method": "GET",
+    "url": "/order/",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/order/paywall",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/payment/add-payment",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "POST",
+    "url": "/catalog/price/",
+    "documentationUrl": "",
+    "parameters": []
   },
   {
     "method": "POST",
@@ -82,13 +218,13 @@
         "alias": null,
         "deprecated": null,
         "in": "BODY",
-        "name": "prices[].unit_amount"
+        "name": "prices[].unit_type"
       },
       {
         "alias": null,
         "deprecated": null,
         "in": "BODY",
-        "name": "prices[].unit_type"
+        "name": "prices[].unit_amount"
       },
       {
         "alias": null,
@@ -103,20 +239,9 @@
         "name": "prices[].metadata"
       },
       { "alias": null, "deprecated": null, "in": "BODY", "name": "vendor_id" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "tags" }
-    ]
-  },
-  {
-    "method": "GET",
-    "url": "/catalog/product/{product_id_or_slug}",
-    "documentationUrl": "",
-    "parameters": [
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "PATH",
-        "name": "product_id_or_slug"
-      }
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "tags" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "metadata" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "metadata.*" }
     ]
   },
   {
@@ -125,6 +250,52 @@
     "documentationUrl": "",
     "parameters": [
       { "alias": null, "deprecated": null, "in": "PATH", "name": "product_id" }
+    ]
+  },
+  {
+    "method": "POST",
+    "url": "/catalog/product/delete_all",
+    "documentationUrl": "",
+    "parameters": []
+  },
+  {
+    "method": "GET",
+    "url": "/catalog/feed",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "shop_id" }
+    ]
+  },
+  {
+    "method": "GET",
+    "url": "/catalog/product/{product_identifier}",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "by" },
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "page" },
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "per_page" },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "PATH",
+        "name": "product_identifier"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "url": "/catalog/product/",
+    "documentationUrl": "",
+    "parameters": [
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "by" },
+      {
+        "alias": null,
+        "deprecated": null,
+        "in": "QUERY",
+        "name": "collection"
+      },
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "page" },
+      { "alias": null, "deprecated": null, "in": "QUERY", "name": "per_page" }
     ]
   },
   {
@@ -163,13 +334,13 @@
         "alias": null,
         "deprecated": null,
         "in": "BODY",
-        "name": "prices[].unit_amount"
+        "name": "prices[].unit_type"
       },
       {
         "alias": null,
         "deprecated": null,
         "in": "BODY",
-        "name": "prices[].unit_type"
+        "name": "prices[].unit_amount"
       },
       {
         "alias": null,
@@ -184,215 +355,33 @@
         "name": "prices[].metadata"
       },
       { "alias": null, "deprecated": null, "in": "BODY", "name": "vendor_id" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "tags" }
-    ]
-  },
-  {
-    "method": "POST",
-    "url": "/catalog/price/{product_id}",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "GET",
-    "url": "/catalog/collection/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/catalog/collection/",
-    "documentationUrl": "",
-    "parameters": [
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "items" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "items[].id" },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "items[].slug"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "items[].name"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "items[].description"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "items[].tags"
-      },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "*" }
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "tags" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "metadata" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "metadata.*" }
     ]
   },
   {
     "method": "GET",
-    "url": "/catalog/collection/search",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "DELETE",
-    "url": "/catalog/collection/{collection_id}",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "GET",
-    "url": "/media/upload",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "GET",
-    "url": "/cart/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "DELETE",
-    "url": "/cart/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "PATCH",
-    "url": "/cart/{mode}/{price_id}",
-    "documentationUrl": "",
-    "parameters": [
-      { "alias": null, "deprecated": null, "in": "PATH", "name": "price_id" },
-      { "alias": null, "deprecated": null, "in": "PATH", "name": "mode" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "quantity" }
-    ]
-  },
-  {
-    "method": "POST",
-    "url": "/cart/metadata",
+    "url": "/shop/all",
     "documentationUrl": "",
     "parameters": []
   },
   {
     "method": "POST",
-    "url": "/payment/add-payment",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/order/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "GET",
-    "url": "/order/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/order/paywall",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/order/cancel/{order_id}",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/order/clone/{order_id}",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/helpdesk/",
-    "documentationUrl": "",
-    "parameters": [
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "desk_type" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "name" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "email" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "fields" },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "fields[].label"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "fields[].type"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "fields[].value"
-      }
-    ]
-  },
-  {
-    "method": "GET",
-    "url": "/address/",
-    "documentationUrl": "",
-    "parameters": []
-  },
-  {
-    "method": "POST",
-    "url": "/address/",
+    "url": "/shop/create",
     "documentationUrl": "",
     "parameters": [
       { "alias": null, "deprecated": null, "in": "BODY", "name": "name" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "line_1" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "line_2" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "city" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "state" },
-      { "alias": null, "deprecated": null, "in": "BODY", "name": "zip_code" },
       {
         "alias": null,
         "deprecated": null,
         "in": "BODY",
-        "name": "phone_number"
+        "name": "description"
       },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "delivery_instructions"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "default_billing"
-      },
-      {
-        "alias": null,
-        "deprecated": null,
-        "in": "BODY",
-        "name": "default_delivery"
-      }
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "site_url" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "brandy_id" },
+      { "alias": null, "deprecated": null, "in": "BODY", "name": "admin_email" }
     ]
   },
-  {
-    "method": "DELETE",
-    "url": "/address/{address_id}",
-    "documentationUrl": "",
-    "parameters": [
-      { "alias": null, "deprecated": null, "in": "PATH", "name": "address_id" }
-    ]
-  }
+  { "method": "GET", "url": "/shop/", "documentationUrl": "", "parameters": [] }
 ]

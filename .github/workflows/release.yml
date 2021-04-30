@@ -13,16 +13,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "12.x"
-      - run: npm ci
-      - run: npm install @kirbic/openapi-types@latest
+      - run: yarn install --frozen-lockfile
+      - run: yarn add @kirbic/openapi-types@latest
         if: github.event_name == 'repository_dispatch'
       - run: node -e "console.log('::set-output name=version::' + require('@kirbic/openapi-types/package').version)"
         id: openapi_types
-      - run: npm run update-endpoints
+      - run: yarn run update-endpoints
         env:
           VERSION: ${{ steps.openapi_types.outputs.version }}
-      - run: npm run build
-      - run: npx semantic-release
+      - run: yarn run build
+      - run: yarn run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
