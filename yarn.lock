@@ -899,10 +899,10 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     to-fast-properties "^2.0.0"
 
-"@kirbic/openapi-types@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@kirbic/openapi-types/-/openapi-types-1.1.6.tgz#f1042252e143b3bbbc166a4430446efa4768ade3"
-  integrity sha512-bgVjcVDV7srqMZO6Lu2KUZss3rKUVguriLh2TMmE1QjEB69cryOQhpSgP0JotQUnzhcM99k5fDgf6wzFPN3oHA==
+"@kirbic/openapi-types@^1.1.7":
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@kirbic/openapi-types/-/openapi-types-1.1.7.tgz#af370bd966bdeb85bec14297794da07e7865d07b"
+  integrity sha512-4XK97NCtHF1y8+HOVZXBxXvCauT4sz4G8vZ8K2EXeNPROHBeG8VjuIPAxYO2k0lAQ1VLHSwoaQOzRwiwHScAyw==
   dependencies:
     axios "^0.21.1"
     fs-extra "^9.1.0"
